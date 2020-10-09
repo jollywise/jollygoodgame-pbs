@@ -1,0 +1,21 @@
+@import './reset';
+@import './icons';
+
+body {
+  background-color: black;
+}
+
+#shortcuts-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.acessible-btn {
+  background: none;
+  pointer-events: none !important;
+  &:focus {
+    box-sizing: border-box;
+    // border: 5px solid yellow;
+  }
+}

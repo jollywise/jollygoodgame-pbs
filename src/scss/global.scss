@@ -1,0 +1,214 @@
+$image_path: "../assets/shared/images/";
+$font_path : "../css/fonts/";
+
+@import './colors';
+
+.text-focus
+{
+    &:focus
+    {
+        text-decoration: underline;
+    }
+}
+
+
+/*MIXINS */
+@mixin alignself{
+    -ms-flex-item-align:center;
+    align-self:center;
+}
+
+@mixin backgroundimage($_image){
+    background-image:url(#{$image_path}#{$_image});
+    background-repeat: no-repeat;
+}
+
+@mixin noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+@mixin select{
+    -webkit-touch-callout: inherit;
+    -webkit-user-select: inherit;
+    -khtml-user-select: inherit;
+    -moz-user-select: inherit;
+    -ms-user-select: inherit;
+    user-select: inherit;
+}
+
+@mixin placeholder{
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}
+}
+
+@mixin transform($extra:null){
+    -webkit-transform: $extra;
+    -ms-transform: $extra;
+    transform: $extra;
+}
+@mixin transformorigin($extra:null){
+    -webkit-transform-origin: $extra;
+    -ms-transform-origin: $extra;
+    transform-origin: $extra;
+}
+@mixin translatecenter($extra:null){
+    -webkit-transform: translate(-50%,-50%) $extra;
+    -ms-transform: translate(-50%,-50%) $extra;
+    transform: translate(-50%,-50%) $extra;
+}
+
+@mixin translatecenterx($extra:null){
+    -webkit-transform: translate(-50%,0) $extra;
+    -ms-transform: translate(-50%,0) $extra;
+    transform: translate(-50%,0) $extra;
+}
+
+@mixin translatecentery($extra:null){
+    -webkit-transform: translate(0%,-50%) $extra;
+    -ms-transform: translate(0%,-50%) $extra;
+    transform: translate(0%,-50%) $extra;
+}
+@mixin translatenone{
+    -webkit-transform: translate(0%,0%);
+    -ms-transform: translate(0%,0%);
+    transform: translate(0%,0%);
+}
+
+@mixin transformstyle($val) {
+  -webkit-transform-style: $val;
+  -ms-transform-style: $val;
+  transform-style: $val;
+}
+
+@mixin perspective($val) {
+  -webkit-perspective: $val;
+  -ms-perspective: $val;
+  perspective: $val;
+}
+
+@mixin perspectiveorigin($val){
+  -webkit-perspective-origin: $val;
+  -ms-perspective-origin: $val;
+  perspective-origin: $val;
+}
+
+@mixin backface{
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+@mixin accelerate{
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+@mixin displayflex{
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+@mixin flex($count: 1){
+    -webkit-flex: $count; /* Safari 6.1+ */
+    -ms-flex: $count; /* IE 10 */
+    flex: $count;
+}
+
+@mixin center{
+    text-align: center;
+}
+
+@mixin flexdirection($dir){
+    -webkit-flex-direction: $dir;
+    -ms-flex-direction: $dir;
+    flex-direction: $dir;
+}
+@mixin order($order){
+    -webkit-order: $order;
+    -ms-order: $order;
+    order: $order;
+}
+
+//@mixin calc($prop, $val) {
+//  #{$prop}: calc($val);
+//  #{$prop}: -webkit-calc($val);
+//}
+
+@mixin stroke($width, $color) {
+    $width: $width + 0;
+    $shadow: 0 0 0 transparent;
+    $i: 0;
+    $w: 1;
+
+    @while ($i < $width) {
+        $i: $i + 1;
+        $j: 0;
+        $w: $w + 2;
+
+        @for $r from 1 through $w {
+            @for $c from 1 through $w {
+                $x: $c - ceil($w / 2);
+                $y: $r - ceil($w / 2);
+
+                $shadow: #{$shadow}, #{$x}px #{$y}px 0 $color;
+            }
+        }
+    }
+
+    text-shadow: $shadow;
+}
+
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    animation: $animations;
+}
+@mixin animationfillmode($mode) {
+    -webkit-animation-fill-mode: $mode;
+    animation-fill-mode: $mode;
+}
+@mixin animationplaystate($state) {
+    -webkit-animation-play-state: $state;
+    -moz-animation-play-state: $state;
+    animation-play-state: $state;
+}
+
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+
+
+@mixin relativesize($prop, $val){
+    $rem: ($val / 100);
+    #{$prop}: #{$rem}rem;
+}
+
+
+@mixin transparentbg(){
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=');
+}
