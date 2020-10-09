@@ -11,7 +11,7 @@ export class StoragePlugin {
 
   deleteGameData(saveId) {
     if (this.springRoll) {
-      this.springRoll.setGameData(saveId, JSON.stringify({}));
+      // this.springRoll.setGameData(saveId, JSON.stringify({}));
     } else {
       console.warn('SpringRoll not available');
     }
@@ -20,7 +20,7 @@ export class StoragePlugin {
   setGameData(saveId, value) {
     const savesString = JSON.stringify(value);
     if (this.springRoll) {
-      this.springRoll.setGameData(saveId, savesString);
+      // this.springRoll.setGameData(saveId, savesString);
     } else {
       console.warn('SpringRoll not available');
     }
@@ -43,8 +43,8 @@ export class StoragePlugin {
 
   loadData() {
     if (this.springRoll) {
-      const settings = this.springRoll.getAllSettings();
-      return settings || {};
+      // const settings = this.springRoll.getAllSettings();
+      // return settings || {};
     } else {
       console.warn('SpringRoll not available');
     }

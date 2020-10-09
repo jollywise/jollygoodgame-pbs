@@ -10,19 +10,19 @@ export class SettingsPlugin extends EventEmitter {
 
   set audio(audio) {
     if (this.supported) {
-      this.springRoll.setAudio(audio); // SpringRoll save
+      // this.springRoll.setAudio(audio); // SpringRoll save
     }
   }
 
   set motion(motion) {
     if (this.supported) {
-      this.springRoll.setMotion(motion); // SpringRoll save
+      // this.springRoll.setMotion(motion); // SpringRoll save
     }
   }
 
   set captions(captions) {
     if (this.supported) {
-      this.springRoll.setSubtitles(captions); // SpringRoll save
+      // this.springRoll.setSubtitles(captions); // SpringRoll save
     }
   }
 
@@ -30,10 +30,11 @@ export class SettingsPlugin extends EventEmitter {
     if (!this.supported) {
       return false;
     }
-    return this.springRoll.showSettings(
-      this.onSettingChanged.bind(this),
-      this.onSettingsClosed.bind(this)
-    );
+    // return this.springRoll.showSettings(
+    //   this.onSettingChanged.bind(this),
+    //   this.onSettingsClosed.bind(this)
+    // );
+    return false;
   }
 
   onSettingChanged(key, value) {

@@ -29,12 +29,12 @@ export class TrackingPlugin {
   trackInternal(actionName = '', actionType = '', params = {}) {
     // params.container = STATS.CONTAINER;
     this.debug && console.log('[STATS] springRoll.sendStatsEvent', actionName, actionType, params);
-    this.springRoll.sendStatsEvent(actionName, actionType, params);
+    // this.springRoll.sendStatsEvent(actionName, actionType, params);
   }
 
   setPageInternal({ id }) {
     this.debug && console.log('[STATS] springRoll.setStatsScreen', id);
-    this.springRoll.setStatsScreen(id);
+    // this.springRoll.setStatsScreen(id);
   }
 
   isSupported() {
