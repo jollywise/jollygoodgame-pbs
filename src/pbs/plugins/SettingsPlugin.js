@@ -24,8 +24,8 @@ export class SettingsPlugin extends EventEmitter {
         this.emit(SETTINGS_EVENTS.CHANGED, { key: 'sfx', value });
       });
 
-      springRoll.state.captions.subscribe((value) => {
-        this.emit(SETTINGS_EVENTS.CHANGED, { key: 'captions', value });
+      springRoll.state.captionsMuted.subscribe((value) => {
+        this.emit(SETTINGS_EVENTS.CHANGED, { key: 'captions', value: !value });
       });
     }
   }
