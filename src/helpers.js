@@ -7,10 +7,11 @@ export const addPlugins = (scope, opts, storage) => {
 
   springRoll.state.pause.subscribe((value) => {
     console.log('SpringRoll paused', value);
-  });
-
-  springRoll.state.soundVolume.subscribe((value) => {
-    console.log('SpringRoll volume', value);
+    if (value) {
+      scope.controller.pauseGame();
+    } else {
+      scope.controller.resumeGame();
+    }
   });
 
   scope.events.once('boot', () => {

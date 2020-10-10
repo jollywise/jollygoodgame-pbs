@@ -6,53 +6,32 @@ export class SettingsPlugin extends EventEmitter {
     super();
     this.springRoll = springRoll;
     this.supported = this.isSupported();
-  }
 
-  set audio(audio) {
     if (this.supported) {
-      // this.springRoll.setAudio(audio); // SpringRoll save
-    }
-  }
+      springRoll.state.soundVolume.subscribe((value) => {
+        this.emit(SETTINGS_EVENTS.CHANGED, { key: 'audio', value });
+      });
 
-  set motion(motion) {
-    if (this.supported) {
-      // this.springRoll.setMotion(motion); // SpringRoll save
-    }
-  }
+      springRoll.state.voVolume.subscribe((value) => {
+        this.emit(SETTINGS_EVENTS.CHANGED, { key: 'vo', value });
+      });
 
-  set captions(captions) {
-    if (this.supported) {
-      // this.springRoll.setSubtitles(captions); // SpringRoll save
+      springRoll.state.musicVolume.subscribe((value) => {
+        this.emit(SETTINGS_EVENTS.CHANGED, { key: 'music', value });
+      });
+
+      springRoll.state.sfxVolume.subscribe((value) => {
+        this.emit(SETTINGS_EVENTS.CHANGED, { key: 'sfx', value });
+      });
+
+      springRoll.state.captions.subscribe((value) => {
+        this.emit(SETTINGS_EVENTS.CHANGED, { key: 'captions', value });
+      });
     }
   }
 
   showSettings() {
-    if (!this.supported) {
-      return false;
-    }
-    // return this.springRoll.showSettings(
-    //   this.onSettingChanged.bind(this),
-    //   this.onSettingsClosed.bind(this)
-    // );
     return false;
-  }
-
-  onSettingChanged(key, value) {
-    switch (key) {
-      case 'audio':
-        this.emit(SETTINGS_EVENTS.CHANGED, { key, value });
-        break;
-      case 'motion':
-        this.emit(SETTINGS_EVENTS.CHANGED, { key, value });
-        break;
-      case 'subtitles':
-        this.emit(SETTINGS_EVENTS.CHANGED, { key: 'captions', value });
-        break;
-    }
-  }
-
-  onSettingsClosed() {
-    this.emit(SETTINGS_EVENTS.CLOSED);
   }
 
   isSupported() {
