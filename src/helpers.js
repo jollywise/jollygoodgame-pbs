@@ -3,6 +3,7 @@ import { SafeScaleManager } from 'springroll';
 
 export const addPlugins = (scope, opts, storage) => {
   const { springRoll } = opts;
+  const { defaultDimensions, safeDimensions } = scope;
   scope.springRoll = springRoll;
 
   springRoll.state.pause.subscribe((value) => {
@@ -16,10 +17,10 @@ export const addPlugins = (scope, opts, storage) => {
 
   scope.events.once('boot', () => {
     scope.safeScale = new SafeScaleManager({
-      width: scope.defaultWidth,
-      height: scope.defaultHeight,
-      safeWidth: scope.safeWidth || scope.defaultWidth,
-      safeHeight: scope.safeHeight || scope.defaultHeight,
+      width: defaultDimensions.width,
+      height: defaultDimensions.height,
+      safeWidth: safeDimensions.width || defaultDimensions.width,
+      safeHeight: safeDimensions.height || defaultDimensions.height,
       callback: (opts) => {
         console.log('Window scale changed', opts);
       },
