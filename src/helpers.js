@@ -19,12 +19,18 @@ export const addPlugins = (scope, opts, storage) => {
   // PBS Scaling
   const onWindowResize = (opts) => {
     // https://github.com/SpringRoll/Springroll-Seed/blob/templates/phaser3/src/SpringrollGame.js
-    if (!scope.canvas) {
+    if (!scope.viewportController) {
       return;
     }
-    const { scaleRatio } = opts;
-    scope.canvas.style.width = `${defaultDimensions.width * scaleRatio}px`;
-    scope.canvas.style.height = `${defaultDimensions.height * scaleRatio}px`;
+    /*
+     * Adjusting the canvas css screws up pointer events - so reverting to phaser scaling
+     * and sending through the springroll scale options to viewportController
+     */
+
+    // const { scaleRatio } = opts;
+    // scope.canvas.style.width = `${defaultDimensions.width * scaleRatio}px`;
+    // scope.canvas.style.height = `${defaultDimensions.height * scaleRatio}px`;
+
     // pass on the springroll scale values to viewportController
     scope.viewportController.updateViewportCanvasBounds(opts);
   };
