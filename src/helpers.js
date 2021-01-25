@@ -63,5 +63,5 @@ export const addPlugins = (scope, opts, storage) => {
 
   // Captions : TODO: Sort out initialMuteState
   const initialMuteState = false;
-  scope.captions = new CaptionsPlugin(initialMuteState);
+  scope.captions = new CaptionsPlugin(springRoll, initialMuteState);
 };
