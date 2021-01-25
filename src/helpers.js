@@ -61,7 +61,7 @@ export const addPlugins = (scope, opts, storage) => {
   // PBS Settings
   scope.settings.plugin = new SettingsPlugin(springRoll);
 
-  // Captions
+  // Captions : TODO: Sort out initialMuteState
   const initialMuteState = false;
   scope.captions = new CaptionsPlugin(initialMuteState);
 };

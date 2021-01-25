@@ -1,16 +1,22 @@
 import { CaptionPlayer, HtmlRenderer, CaptionFactory } from 'springroll';
 
 export class CaptionsPlugin {
-  constructor(initialMuteState, debug = false) {
-    this.debug = debug;
+  constructor(springRoll, initialMuteState) {
+    this.springRoll = springRoll;
+    this.supported = this.isSupported();
+
+    if (this.supported) {
+      springRoll.state.captionsMuted.subscribe((value) => {
+        this.setMute(value)
+      });
+    }
+
     const captionsElement = document.getElementById('captions');
     this.captionPlayer = new CaptionPlayer({}, new HtmlRenderer(captionsElement));
     this.setMute(initialMuteState);
-    console.log('PBS CaptionsPlugin created', this.captionPlayer);
   }
 
   setData(data) {
-    console.log('CaptionsPlugin.setData', data);
     this.captionPlayer.captions = CaptionFactory.createCaptionMap(data);
   }
 
@@ -18,6 +24,7 @@ export class CaptionsPlugin {
     if (val === true) {
       this.captionPlayer.stop();
     }
+    console.log('CaptionsPlugin.setMute', val);
     this.isMuted = val;
   }
 
@@ -25,7 +32,6 @@ export class CaptionsPlugin {
     if (this.isMuted) {
       return;
     }
-    console.log('playCaption', name, time, args);
     this.captionPlayer.start(name, time, args);
   }
 
@@ -40,7 +46,17 @@ export class CaptionsPlugin {
   }
 
   destroy() {
+    this.springRoll = null;
     this.captionPlayer.captions = null;
     this.captionPlayer = null;
+  }
+
+  isSupported() {
+    if (typeof this.springRoll !== 'undefined') {
+      console.log('PBS CaptionsPlugin registered');
+      return true;
+    }
+    console.warn('PBS CaptionsPlugin : SpringRoll not available');
+    return false;
   }
 }
