@@ -1,4 +1,4 @@
-import { StoragePlugin, TrackingPlugin, SettingsPlugin } from './pbs/plugins';
+import { StoragePlugin, TrackingPlugin, SettingsPlugin, CaptionsPlugin } from './pbs/plugins';
 import { SafeScaleManager } from 'springroll';
 
 export const addPlugins = (scope, opts, storage) => {
@@ -60,4 +60,8 @@ export const addPlugins = (scope, opts, storage) => {
 
   // PBS Settings
   scope.settings.plugin = new SettingsPlugin(springRoll);
+
+  // Captions
+  const initialMuteState = false;
+  scope.captions = new CaptionsPlugin(initialMuteState);
 };

@@ -86,6 +86,6 @@
   },
   "dependencies": {
     "@jollywise/jollygoodgame": "git://github.com/jollywise/jollygoodgame.git#master",
-    "springroll": "^2.2.0"
+    "springroll": "^2.3.2"
   }
 }
