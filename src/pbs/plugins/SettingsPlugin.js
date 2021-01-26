@@ -6,28 +6,19 @@ export class SettingsPlugin extends EventEmitter {
     super();
     this.springRoll = springRoll;
     this.supported = this.isSupported();
+  }
 
-    if (this.supported) {
-      springRoll.state.soundVolume.subscribe((value) => {
-        this.emit(SETTINGS_EVENTS.CHANGED, { key: 'audio', value });
-      });
-
-      springRoll.state.voVolume.subscribe((value) => {
-        this.emit(SETTINGS_EVENTS.CHANGED, { key: 'vo', value });
-      });
-
-      springRoll.state.musicVolume.subscribe((value) => {
-        this.emit(SETTINGS_EVENTS.CHANGED, { key: 'music', value });
-      });
-
-      springRoll.state.sfxVolume.subscribe((value) => {
-        this.emit(SETTINGS_EVENTS.CHANGED, { key: 'sfx', value });
-      });
-
-      // springRoll.state.captionsMuted.subscribe((value) => {
-      //   this.emit(SETTINGS_EVENTS.CHANGED, { key: 'captions', value: !value });
-      // });
-    }
+  soundVolume(value) {
+    this.emit(SETTINGS_EVENTS.CHANGED, { key: 'audio', value });
+  }
+  voVolume(value) {
+    this.emit(SETTINGS_EVENTS.CHANGED, { key: 'vo', value });
+  }
+  musicVolume(value) {
+    this.emit(SETTINGS_EVENTS.CHANGED, { key: 'music', value });
+  }
+  sfxVolume(value) {
+    this.emit(SETTINGS_EVENTS.CHANGED, { key: 'sfx', value });
   }
 
   showSettings() {

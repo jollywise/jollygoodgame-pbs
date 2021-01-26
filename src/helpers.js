@@ -1,20 +1,9 @@
 import { StoragePlugin, TrackingPlugin, SettingsPlugin, CaptionsPlugin } from './pbs/plugins';
 import { SafeScaleManager } from 'springroll';
 
-export const addPlugins = (scope, opts, storage) => {
-  const { springRoll } = opts;
+export const addPlugins = (scope, springRoll, storage, defaults) => {
   const { defaultDimensions, safeDimensions } = scope;
   scope.springRoll = springRoll;
-
-  // PBS Pause subscription
-  springRoll.state.pause.subscribe((value) => {
-    console.log('SpringRoll paused', value);
-    if (value) {
-      scope.controller.pauseGame();
-    } else {
-      scope.controller.resumeGame();
-    }
-  });
 
   // PBS Scaling
   const onWindowResize = (opts) => {
@@ -59,9 +48,10 @@ export const addPlugins = (scope, opts, storage) => {
   scope.tracking.plugin = new TrackingPlugin(springRoll, true);
 
   // PBS Settings
-  scope.settings.plugin = new SettingsPlugin(springRoll);
+  scope.settings.plugin = new SettingsPlugin(springRoll, defaults.soundVolume);
+  // restores default volume mute state
+  scope.settings.audio = defaults.soundVolume === 1 ? true : false;
 
-  // Captions : TODO: Sort out initialMuteState
-  const initialMuteState = false;
-  scope.captions = new CaptionsPlugin(springRoll, initialMuteState);
+  // Captions
+  scope.captions = new CaptionsPlugin(springRoll, defaults.captionsMuted);
 };

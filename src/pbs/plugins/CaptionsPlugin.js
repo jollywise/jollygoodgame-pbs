@@ -5,12 +5,6 @@ export class CaptionsPlugin {
     this.springRoll = springRoll;
     this.supported = this.isSupported();
 
-    if (this.supported) {
-      springRoll.state.captionsMuted.subscribe((value) => {
-        this.setMute(value)
-      });
-    }
-
     const captionsElement = document.getElementById('captions');
     this.captionPlayer = new CaptionPlayer({}, new HtmlRenderer(captionsElement));
     this.setMute(initialMuteState);
