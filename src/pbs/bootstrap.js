@@ -1,7 +1,9 @@
 import { Application } from 'springroll';
+import { GoogleAnalytics } from 'springroll-google-analytics-plugin';
 
 export const bootstrapPBS = ({ springRollConfig, app }) => {
   const promise = new Promise((resolve) => {
+    Application.uses(new GoogleAnalytics());
     const springRoll = new Application(springRollConfig);
 
     springRoll.state.ready.subscribe((isReady) => {

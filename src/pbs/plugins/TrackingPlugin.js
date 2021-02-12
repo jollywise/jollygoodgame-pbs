@@ -1,8 +1,16 @@
 export class TrackingPlugin {
   constructor(springRoll, debug = false) {
-    this.springRoll = springRoll;
+    this.plugin = springRoll.getPlugin('GoogleAnalytics');
     this.debug = debug;
     this.supported = this.isSupported();
+    this.startTime = Date.now();
+    this.screenName = '';
+    this.stats = {};
+
+    window.addEventListener('unload', () => {
+      const duration = (Date.now() - this.startTime) / 1000;
+      this.track({ action: 'Quit', value: duration });
+    });
   }
 
   track(opts) {
@@ -11,14 +19,8 @@ export class TrackingPlugin {
     }
   }
 
-  setPage(opts) {
-    if (this.supported) {
-      this.setPageInternal(opts);
-    }
-  }
-
-  trackGameLoaded() {
-    this.track(this.stats.GAME_LOADED, 'true');
+  setPage({ id }) {
+    this.screenName = id;
   }
 
   addStats(stats) {
@@ -26,28 +28,32 @@ export class TrackingPlugin {
   }
 
   // internal
-  trackInternal(actionName = '', actionType = '', params = {}) {
-    // params.container = STATS.CONTAINER;
-    this.debug && console.log('[STATS] springRoll.sendStatsEvent', actionName, actionType, params);
-    // this.springRoll.sendStatsEvent(actionName, actionType, params);
-  }
+  trackInternal({ category = '', action = '', label = '', value = '' }) {
+    if (category === '') {
+      category = this.stats.APP_NAME;
+    }
 
-  setPageInternal({ id }) {
-    this.debug && console.log('[STATS] springRoll.setStatsScreen', id);
-    // this.springRoll.setStatsScreen(id);
+    if (label === '' && this.screenName !== '') {
+      label = 'ScreenName_' + this.screenName;
+    }
+
+    this.debug &&
+      console.log('[STATS] springRollGoogleAnalytics.event', category, action, label, value);
+
+    this.plugin.event(category, action, label, value);
   }
 
   isSupported() {
-    if (typeof this.springRoll !== 'undefined') {
+    if (typeof this.plugin !== 'undefined' && this.plugin !== null) {
       console.log('PBS TrackingPlugin registered');
       return true;
     }
-    console.warn('PBS TrackingPlugin : SpringRoll not available');
+    console.warn('PBS TrackingPlugin : SpringRollGoogleAnalytics not available');
     return false;
   }
 
   destroy() {
-    this.springRoll = '';
+    this.plugin = null;
     this.stats = null;
   }
 }
