@@ -1,8 +1,14 @@
-import { Application } from 'springroll';
+import { Application, Debugger } from 'springroll';
 import { GoogleAnalytics } from 'springroll-google-analytics-plugin';
+import { LoggingPanel } from 'springroll-logging-panel-plugin';
 
 export const bootstrapPBS = ({ springRollConfig, app }) => {
   const promise = new Promise((resolve) => {
+    Debugger.minLevel('GENERAL');
+    Debugger.enable(__DEBUG__);
+    if (__DEBUG__) {
+      Application.uses(new LoggingPanel());
+    }
     Application.uses(new GoogleAnalytics());
     const springRoll = new Application(springRollConfig);
 
