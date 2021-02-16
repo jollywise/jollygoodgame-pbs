@@ -87,6 +87,7 @@
   "dependencies": {
     "@jollywise/jollygoodgame": "git://github.com/jollywise/jollygoodgame.git#master",
     "springroll": "^2.3.3",
+    "springroll-container": "^1.1.3",
     "springroll-google-analytics-plugin": "git+ssh://git@git.pbs.org:7999/sd/springroll-google-analytics.git#3.0.0",
     "springroll-logging-panel-plugin": "git+ssh://git@git.pbs.org:7999/sd/springroll-logging-panel-plugin.git"
   }
