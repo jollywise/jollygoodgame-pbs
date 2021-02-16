@@ -14,6 +14,8 @@ export const bootstrapPBS = ({ springRollConfig, app }) => {
 
     springRoll.state.ready.subscribe((isReady) => {
       if (isReady) {
+        console.log('SpringRoll initialised');
+        app.addSpringroll(springRoll);
         resolve({ success: true, springRoll: springRoll });
       }
     });
