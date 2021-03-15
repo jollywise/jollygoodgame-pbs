@@ -1,0 +1,29 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <% for (var css in htmlWebpackPlugin.files.css) { %>
+    <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+  <% } %>
+</head>
+
+<body>
+<div id="frame">
+  <div id="captions" class="size-md bg-black-semi color-white edge-none font-arial align-top"></div>
+  <div id="content"></div>
+</div>
+
+<% if (htmlWebpackPlugin.options.shortcutsEnabled) { %>
+  <div id="shortcuts-container"></div>
+<% } %>
+
+<%= htmlWebpackPlugin.files.runtime %>
+<% for (var key in htmlWebpackPlugin.files.chunks) { %>
+  <script src="<%= htmlWebpackPlugin.files.chunks[key].entry %>"></script>
+<% } %>
+</body>
+</html>

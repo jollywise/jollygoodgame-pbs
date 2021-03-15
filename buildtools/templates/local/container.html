@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>
+    Elinor Wonders Why - Ari's Wonderful Ideas
+  </title>
+  <meta name="author" content="PBS KIDS">
+  <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="css/main.css?v=1.9.0" rel="stylesheet">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <script src=js/libs/bellhop-umd.js></script>
+  <script src="js/libs/container.js"></script>
+</head>
+
+<body>
+<div id="site" class="game">
+  <header></header>
+  <div id="game">
+    <div id="content" class="content">
+      <ul class="controls">
+        <li>
+          <button id="soundButton" type="button" class="controls-button">Toggle Audio</button>
+          <button id="captionsButton" type="button" class="controls-button">Mute Captions</button>
+        </li>
+      </ul>
+      <div class="frame game-background" data-aspect-ratio="1920/1064" style="width: 100%; padding-top: 55.41666666666667%;">
+        <iframe width="100%" height="100%" id="appContainer" class="js-springroll-canvas" data-game="elinors-nature-adventure" scrolling="no" frameborder="0" allowfullscreen="1" style="display: block;" ></iframe>
+      </div>
+    </div>
+    <footer id="footer" class="footer"></footer>
+  </div>
+</div>
+<script>
+  var container = new springroll.Container('#appContainer', {
+    soundButton: '#soundButton',
+    captionsButton: '#captionsButton',
+  });
+  container.openPath('index.html', {
+    playOptions: {
+      option1: 7,
+      option2: 'blue',
+    },
+  });
+  /**
+   * Testing communication from client to container
+   */
+  container.client.on('clientEvent', (event) => {
+    // Capture the data from the event
+    // console.log('clientEvent', event.data.msg);
+  });
+</script>
+</body>
