@@ -17,9 +17,7 @@
       <div id="content"></div>
     </div>
 
-    <% if (htmlWebpackPlugin.options.shortcutsEnabled) { %>
-      <div id="shortcuts-container"></div>
-    <% } %>
+    <div id="shortcuts-container"></div>
 
     <%= htmlWebpackPlugin.files.runtime %>
     <% for (var key in htmlWebpackPlugin.files.chunks) { %>
