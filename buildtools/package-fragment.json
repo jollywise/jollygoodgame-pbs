@@ -8,7 +8,11 @@
     "dist:local": "cross-env NODE_ENV=production webpack --config ./node_modules/@jollywise/jollygoodgame-pbs/buildtools/webpack.config.js --env.target=jollywise --env.buildtype=dist --env.minimize=true",
     "build:pbs": "cross-env NODE_ENV=production webpack --config ./node_modules/@jollywise/jollygoodgame-pbs/buildtools/webpack.config.js --env.target=pbs --env.buildtype=dist --env.minimize=true"
   },
+  "devDependencies": {
+    "@pbs/eslint-config-pbs-kids": "^1.0.2"
+  },
   "eslintConfig": {
+    "extends": ["@pbs/eslint-config-pbs-kids", "prettier", "plugin:compat/recommended"],
     "globals": {
       "__DEBUG__": false,
       "__DEBUG_BOUNDS__": false,
