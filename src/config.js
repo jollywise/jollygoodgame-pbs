@@ -6,3 +6,14 @@ export const getConfigPBS = (opts) => {
 
   return conf;
 };
+
+export const getConfigSpringroll = () => {
+  return {
+    features: {
+      captions: true,
+      vo: true,
+      music: true,
+      sfx: true,
+    },
+  };
+}

@@ -3,9 +3,9 @@ import App from 'App';
 import Boot from 'game/scenes/Boot';
 import Load from 'game/scenes/Load';
 import { dOMReady, VIEWPORT_TYPE } from '@jollywise/jollygoodgame';
-import { SPRINGROLL_CONFIG_BASE, bootstrapPBS, getConfigPBS } from '@jollywise/jollygoodgame-pbs';
+import { bootstrapPBS, getConfigPBS, getConfigSpringroll } from '@jollywise/jollygoodgame-pbs';
 
-const springRollConfig = SPRINGROLL_CONFIG_BASE; // add to the base stuff if needed
+const springRollConfig = getConfigSpringroll(); // add to the base stuff if needed
 const paths = { base: './', assets: 'assets/' };
 const gameConfig = getConfigPBS();
 
