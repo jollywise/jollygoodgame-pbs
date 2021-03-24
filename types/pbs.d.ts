@@ -1,6 +1,5 @@
 export const PBS_STATS_BASE;
 export const SETTINGS_EVENTS;
-export const SPRINGROLL_CONFIG_BASE;
 
 export function bootstrapPBS(opts: object);
 
