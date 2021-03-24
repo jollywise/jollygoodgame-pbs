@@ -2,7 +2,7 @@ import './../scss/main.scss';
 import App from 'App';
 import Boot from 'game/scenes/Boot';
 import Load from 'game/scenes/Load';
-import { dOMReady } from '@jollywise/jollygoodgame';
+import { dOMReady, VIEWPORT_TYPE } from '@jollywise/jollygoodgame';
 import { SPRINGROLL_CONFIG_BASE, bootstrapPBS, getConfigPBS } from '@jollywise/jollygoodgame-pbs';
 
 const springRollConfig = SPRINGROLL_CONFIG_BASE; // add to the base stuff if needed
