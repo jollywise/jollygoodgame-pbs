@@ -1,6 +1,6 @@
 const path = require('path');
 const CONTENT_BASE = 'src';
-const TEMPLATES = path.resolve(__dirname, '../../../templates/pbs');
+const TEMPLATES = path.resolve(__dirname, 'template');
 const root = path.resolve('.');
 const dist = path.join(root, 'deploy');
 const htmlOutPath = path.join(root, 'deploy');

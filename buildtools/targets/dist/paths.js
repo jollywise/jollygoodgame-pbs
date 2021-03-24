@@ -1,6 +1,6 @@
 const path = require('path');
 const CONTENT_BASE = 'src';
-const TEMPLATES = path.resolve(__dirname, '../../../templates/local');
+const TEMPLATES = path.resolve(__dirname, 'template');
 const root = path.resolve('.');
 const dist = path.join(root, 'dist/');
 const htmlOutPath = path.join(root, 'dist/');

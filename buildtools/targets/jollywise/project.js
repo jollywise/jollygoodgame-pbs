@@ -8,11 +8,13 @@ const PROJECT = {
   dropConsole: false,
   isVendorChunked: true,
   environmentVars: {
-    isPBS: false,
+    debug: true,
     debugBounds: true,
     watch: false,
     shortcuts: true,
+    env: '',
   },
+  containerId: 'game-holder',
 };
 
 module.exports = PROJECT;

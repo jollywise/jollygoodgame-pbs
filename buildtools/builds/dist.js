@@ -1,13 +1,18 @@
-// const webpack = require('webpack');
+const webpack = require('webpack');
 const merge = require('webpack-merge');
-const { main, optimise, rules, plugins } = require('./config/index');
+const path = require('path');
+const { findJGGFile } = require('@jollywise/jollygoodgame/buildtools/jgg-libs');
 
-module.exports = ({ paths, project, environmentVars, minimize, debug }) => {
+const { main, optimise, rules, plugins } = require(findJGGFile(
+  'buildtools/webpack_config/index.js'
+));
+
+module.exports = ({ paths, project, environmentVars, minimize }) => {
   const PATHS = paths;
   const PROJECT = project;
   const PUBLIC_PATH = '';
   const copyPatterns = [{ from: PATHS.src + '/assets/', to: PATHS.dist + '/assets/' }];
-  if (!project.environmentVars.isPBS) {
+  if (project.environmentVars.env !== 'pbs') {
     copyPatterns.push({
       from: PATHS.templateDir + '/container.html',
       to: PATHS.dist + '/container.html',
@@ -85,7 +90,9 @@ module.exports = ({ paths, project, environmentVars, minimize, debug }) => {
         template: PATHS.templateDir + '/index.ejs',
         filename: PATHS.htmlOutName,
         opts: {
-          shortcutsEnabled: debug,
+          statsCounterName: PROJECT.statsCounterName,
+          containerId: PROJECT.containerId,
+          gameId: PROJECT.gameId,
         },
       }),
     sourceMap &&
