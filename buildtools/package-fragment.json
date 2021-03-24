@@ -3,11 +3,8 @@
     "title": "Project Title"
   },
   "scripts": {
-    "watch": "webpack-dev-server --config ./node_modules/@jollywise/jollygoodgame-pbs/buildtools/webpack.config.js --env.target=local --env.buildtype=watch --env.minimize=false",
-    "build:jollywise": "cross-env NODE_ENV=production webpack --config ./node_modules/@jollywise/jollygoodgame-pbs/buildtools/webpack.config.js --env.target=jollywise --env.buildtype=dist --env.minimize=true",
-    "dist:local": "cross-env NODE_ENV=production webpack --config ./node_modules/@jollywise/jollygoodgame-pbs/buildtools/webpack.config.js --env.target=jollywise --env.buildtype=dist --env.minimize=true",
-    "build:debug": "cross-env NODE_ENV=production webpack --config ./node_modules/@jollywise/jollygoodgame-pbs/buildtools/webpack.config.js --env.target=pbs --env.buildtype=dist --env.minimize=true",
-    "build:release": "cross-env NODE_ENV=production webpack --config ./node_modules/@jollywise/jollygoodgame-pbs/buildtools/webpack.config.js --env.target=pbs --env.buildtype=dist --env.minimize=true --env.debug=false"
+    "build:debug": "cross-env NODE_ENV=production webpack --config ./node_modules/@jollywise/jollygoodgame/buildtools/webpack.config.js --env.target=pbs --env.buildtype=dist --env.minimize=true",
+    "build:release": "cross-env NODE_ENV=production webpack --config ./node_modules/@jollywise/jollygoodgame/buildtools/webpack.config.js --env.target=pbs --env.buildtype=dist --env.minimize=true --env.debug=false"
   },
   "devDependencies": {
     "@pbs/eslint-config-pbs-kids": "^1.0.2"
