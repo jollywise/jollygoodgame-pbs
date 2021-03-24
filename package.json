@@ -171,6 +171,7 @@
       "__WATCH__": false,
       "__SHORTCUTS_ENABLED__": false,
       "__VERSION__": false,
+      "__ENV__": false,
       "Phaser": false
     }
   }
