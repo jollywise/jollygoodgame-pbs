@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "jgg:update": "jgg update"
+  },
+  "dependencies": {
+    "@jollywise/jollygoodgame": "git://github.com/jollywise/jollygoodgame.git#master",
+	  "@jollywise/jollygoodgame-pbs": "git://github.com/jollywise/jollygoodgame-pbs.git#master"
+  }
+}

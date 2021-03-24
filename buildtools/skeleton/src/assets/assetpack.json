@@ -1,0 +1,11 @@
+{
+  "boot": {
+    "files": [
+      {
+        "type": "xml",
+        "key": "copy_xml",
+        "url": "locale/copy.xml"
+      }
+    ]
+  }
+}
