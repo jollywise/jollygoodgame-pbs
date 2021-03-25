@@ -1,7 +1,9 @@
 {
   "name": "@jollywise/jollygoodgame-pbs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Base classes for Phaser development",
+  "author": "Jollywise <info@jollywise.co.uk>",
+  "license": "MIT",
   "main": "src/index.js",
   "types": "types/index.d.ts",
   "scripts": {
@@ -13,8 +15,6 @@
     "type": "git",
     "url": "git+https://github.com/jollywise/jollygoodgame-pbs.git"
   },
-  "author": "",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/jollywise/jollygoodgame-pbs/issues"
   },
@@ -129,7 +129,11 @@
     "node_modules"
   ],
   "eslintConfig": {
-    "extends": ["@pbs/eslint-config-pbs-kids", "prettier", "plugin:compat/recommended"],
+    "extends": [
+      "@pbs/eslint-config-pbs-kids",
+      "prettier",
+      "plugin:compat/recommended"
+    ],
     "plugins": [
       "prettier"
     ],
