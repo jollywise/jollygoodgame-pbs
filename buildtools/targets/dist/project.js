@@ -9,7 +9,6 @@ const PROJECT = {
   isVendorChunked: true,
   environmentVars: {
     debug: true,
-    debugBounds: true,
     watch: false,
     shortcuts: true,
     env: '',

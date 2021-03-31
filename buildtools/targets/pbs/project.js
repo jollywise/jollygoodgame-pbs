@@ -8,7 +8,6 @@ const PROJECT = {
   dropConsole: true,
   isVendorChunked: true,
   environmentVars: {
-    debugBounds: true,
     watch: false,
     env: 'pbs',
   },
