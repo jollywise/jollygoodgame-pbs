@@ -3,7 +3,7 @@ import { addPlugins } from './helpers';
 import SnapFloor from 'phaser/src/math/snap/SnapFloor';
 import Size from 'phaser/src/structs/Size';
 
-export default class PBSAppBase extends AppBase {
+export class PBSAppBase extends AppBase {
   constructor(opts) {
     super(opts);
 
