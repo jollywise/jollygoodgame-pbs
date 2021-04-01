@@ -20,6 +20,7 @@ export default class PBSAppBase extends AppBase {
   }
 
   patchScaler() {
+    console.log('Patching scaler to provide correct aspect ratio handling');
     // fix for keeping aspect ration between 4:3 and 7:3
     Phaser.Structs.Size.prototype.setSize = function (width, height) {
       if (width === undefined) {
