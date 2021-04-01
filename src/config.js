@@ -4,6 +4,13 @@ import { getConfigBase } from '@jollywise/jollygoodgame';
 export const getConfigPBS = (opts = {}) => {
   const conf = getConfigBase(opts);
 
+  conf.scale = {
+    mode: Phaser.Scale.HEIGHT_CONTROLS_WIDTH,
+    parent: conf.parent,
+    width: conf.width,
+    height: conf.height,
+  };
+
   return conf;
 };
 
