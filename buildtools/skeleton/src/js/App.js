@@ -1,4 +1,4 @@
-import PBSAppBase from '@jollywise/jollygoodgame-pbs/src/PBSAppBase';
+import { PBSAppBase } from '@jollywise/jollygoodgame-pbs';
 import GameController from 'game/controller/GameController';
 
 export default class App extends PBSAppBase {
