@@ -22,8 +22,7 @@ export default class Load extends LoadBase {
     this.load.on('progress', this.loadScreen.setProgress, this.loadScreen);
   }
 
-  create() {
-    super.create();
+  loadComplete() {
     this.load.off('progress', this.loadScreen.setProgress, this.loadScreen);
     this.game.controller.assetsLoaded();
   }

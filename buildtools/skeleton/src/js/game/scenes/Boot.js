@@ -16,23 +16,6 @@ export default class Boot extends BootBase {
   }
 
   loadComplete() {
-    this.assetsReady = true;
-  }
-
-  update(time, delta) {
-    time, delta;
-    if (this.assetsReady && this.fontsReady) {
-      this.allDone();
-    }
-  }
-
-  allDone() {
-    this.load.off('start', this.handleLoadStart);
-    this.load.off('progress', this.handleLoadProgress);
-    this.load.off('fileprogress', this.handleFileLoadProgress);
-    this.load.off('loaderror', this.handleLoadError);
-    this.load.off('complete', this.handleLoadComplete);
-
     this.scene.start(this.loadKey, { booted: true });
   }
 }
