@@ -16,6 +16,12 @@ export const bootstrapPBS = ({ springRollConfig, app }) => {
       if (isReady) {
         console.log('SpringRoll initialised');
         app.addSpringroll(springRoll);
+
+        // https://projects.pbs.org/bitbucket/projects/NC/repos/road-trip/pull-requests/16
+        // if the game is being hosted inside of a springroll container, disable Phaser's auto-pause functionality for
+        // audio, since it interferes with the blur/focus cycle of the container
+        app.sound.pauseOnBlur = false;
+
         resolve({ success: true, springRoll: springRoll });
       }
     });
